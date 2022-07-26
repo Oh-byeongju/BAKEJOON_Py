@@ -1,22 +1,24 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
-Nums = [3, 5]
+M, N = map(int, input().split())
 
-dp = [float('inf')] * 5001
-dp[0] = 0
+Max_num = 1000001
+Nums = [False] * Max_num
+Nums[2] = True
 
-for i in range(2):
-    # Nums[i]가 가는 범위
-    for j in range(Nums[i], N + 1):
-        # Nums[i]로 N을 나눴을 때 나머지가 없는 범위
-        if dp[j - Nums[i]] != float('inf'):
-            dp[j] = min(dp[j], dp[j - Nums[i]] + 1)
+for i in range(3, Max_num, 2):
+    Nums[i] = True
 
-# 계산된 결과 출력
-if dp[N] == float('inf'):
-    print(-1)
-else:
-    print(dp[N])
+for i in range(3, N, 2):
+    if Nums[i]:
+        temp_num = i * i
+        if temp_num >= Max_num:
+            break
+        for j in range(i*2, N, temp_num + i):
+            Nums[i] = False
+        i = i//2
 
+for num in Nums:
+    if num:
+        print('dsds')
