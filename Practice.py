@@ -1,24 +1,21 @@
 import sys
 input = sys.stdin.readline
 
-M, N = map(int, input().split())
+N = int(input())
 
-Max_num = 1000001
-Nums = [False] * Max_num
-Nums[2] = True
+def recur(cnt):     # 3 = 0,, 9 = 1 27 = 3  81 = 9
 
-for i in range(3, Max_num, 2):
-    Nums[i] = True
+    print('*' * N)
+    print('* *' * (N // 3))
+    print('*' * N)
 
-for i in range(3, N, 2):
-    if Nums[i]:
-        temp_num = i * i
-        if temp_num >= Max_num:
-            break
-        for j in range(i*2, N, temp_num + i):
-            Nums[i] = False
-        i = i//2
+    if cnt < N // 9:
+        print('*' * (N // 9) + ' ' * (N // 9) + '*' * (N // 9))
+        print('* *' * (N // 9) + ' ' * (N // 3) + '* *' * (N // 9))
+        print('*' * (N // 9) + ' ' * (N // 9) + '*' * (N // 9))
 
-for num in Nums:
-    if num:
-        print('dsds')
+        recur(cnt + N // 3)
+
+
+recur(N//9)
+
