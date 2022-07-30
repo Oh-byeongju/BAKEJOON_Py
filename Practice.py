@@ -1,12 +1,6 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
+dp = [0] * 1000
 
-def recur()
-
-
-
-
-
-print((2**N)-1)
+H, Y = map(int, input().split())
