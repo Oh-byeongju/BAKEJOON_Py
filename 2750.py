@@ -12,4 +12,3 @@ num_list.sort()
 
 for i in range(N):
     print(num_list[i])
-
